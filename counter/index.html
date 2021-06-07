@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    .wrapper {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #result {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <button id="subBtn">-</button>
+    <span id="result">0</span>
+    <button id="addBtn">+</button>
+  </div>
+  <script>
+    const resultDisplay = document.getElementById('result');
+    const addBtn = document.getElementById('addBtn');
+    const subBtn = document.getElementById('subBtn');
+
+    addBtn.addEventListener('click', () => {
+      const val = +resultDisplay.innerText;
+      resultDisplay.innerText = val + 1;
+    })
+
+    subBtn.addEventListener('click', () => {
+      const val = +resultDisplay.innerText;
+      resultDisplay.innerText = val - 1;
+    })
+
+  </script>
+</body>
+</html>

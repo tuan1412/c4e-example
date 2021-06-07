@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timer</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    .wrapper {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #result {
+      margin-top: 12px;
+      font-weight: bold;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="timer">
+      <input id="timeCount" type="number" value="20" min="0" step="1" />
+      <button id="startBtn">Start</button>
+      <button id="stopBtn" disabled>Stop</button>
+      <div id="result">0</div>
+    </div>
+  </div>
+  <script>
+    const timeCountInp = document.getElementById('timeCount');
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const resultDisplay = document.getElementById('result');
+
+    let timer;
+
+    startBtn.addEventListener('click', () => {
+      let timeEnd = +timeCountInp.value
+      
+      if (timeEnd <= 0) {
+        return alert('Start time must not negative')
+      }
+
+      stopBtn.removeAttribute("disabled");
+
+      startBtn.setAttribute('disabled', true);
+      resultDisplay.innerHTML = timeEnd;
+
+      timer = setInterval(() => {
+        timeEnd -= 1;
+        resultDisplay.innerHTML = timeEnd;
+        if (timeEnd < 0) {
+          clearInterval(timer);
+          resultDisplay.innerHTML = "Time's up";
+          startBtn.removeAttribute('disabled');
+          stopBtn.setAttribute('disabled', true);
+        }
+        
+      }, 1000)
+    })
+
+    stopBtn.addEventListener('click', () => {
+      if (!timer) {
+        alert('No timer to stop')
+      }
+
+      clearInterval(timer);
+      stopBtn.setAttribute('disabled', true);
+      startBtn.removeAttribute('disabled');
+      timeCountInp.value = 20;
+      resultDisplay.innerHTML = 'Stopped';
+    })
+  </script>
+</body>
+</html>
