@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    .wrapper {
+      height: 100vh;
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+    }
+    #quoteAuthor {
+      text-align: right;
+    }
+    #reload {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <button id="reload"><i class="fas fa-redo"></i> Reload</button>
+    <div class="qoute">
+      <div id="quoteContent"></div>
+      <div id="quoteAuthor"></div>
+    </div>
+  </div>
+  <script src="/random-quote/data.js"></script>
+  <script>
+    const contentEl = document.getElementById('quoteContent');
+    const authorEl = document.getElementById('quoteAuthor');
+
+    function getRandomQuote() {
+      const randIdx = Math.floor(Math.random() * quotes.length);
+      return quotes[randIdx];
+    }
+
+    function renderQuote() {
+      const quote = getRandomQuote();
+      contentEl.innerHTML = quote.quoteText;
+      authorEl.innerHTML = quote.quoteAuthor;
+    }
+
+    renderQuote();
+
+    const reloadBtn = document.getElementById('reload');
+    reloadBtn.addEventListener('click', renderQuote);
+
+  </script>
+</body>
+</html>
