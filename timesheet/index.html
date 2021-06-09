@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="form-wrapper">
+    <input id="projectInp" placeholder="enter project">
+    <input id="taskInp" placeholder="enter task">
+    <input id="timeInp" placeholder="time spend" type="number" min="0">
+    <button id="addBtn">Add</button>
+    <button id="clearBtn" >Clear</button>
+  </div>
+  <div id="timeWrapper">
+    <table>
+      <thead>
+        <th>Project</th>
+        <th>Task</th>
+        <th>Time spent</th>
+        <th>Actions</th>
+      </thead>
+      <tbody id="bodyWrapper">
+
+      </tbody>
+    </table>
+  </div>
+  <script src="/timesheet/timesheet.js"></script>
+</body>
+</html>
